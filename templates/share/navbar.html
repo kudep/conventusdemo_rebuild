@@ -1,0 +1,73 @@
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/home">CONVENTUS</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Навигация</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/home">Главная</a> </li>
+                <li><a href="/about">О нас</a> </li>
+                <li><a href="/contacts">Контакты</a> </li>
+                {% if username %}
+                    <li><a class="btn" data-toggle="modal" data-target="#SignOut" href="#"><i class="glyphicon glyphicon-menu-left"></i></a></li>
+                    <!--<li><a href="/portal/sys_logout"><i class="glyphicon glyphicon-menu-left"></i></a></li>-->
+                    <li><a href="/portal">Панель управления ({{username}})</a> </li>
+                {% else %}
+                    <li><a href="/portal/sys_login"><i class="glyphicon glyphicon-menu-right"></i></a></li>
+                    <!--<li><a class="btn" data-toggle="modal" data-target="#SignIn" href="#"><i class="glyphicon glyphicon-menu-right"></i></a> </li>-->
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div id="SignOut" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="model-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+            </div>
+            <div class="modal-body">
+                Вы уверены, что хотите выйти?
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger"  href="/portal/sys_logout"> Выйти </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="SignIn" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="model-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Авторизация</h4>
+            </div>
+            <div class="modal-body">
+                <form  action="/portal/sys_login/" method="post">
+                <div class="form-group">
+                    <input type="text" placeholder="Email" name="username" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Пароль" name="password" class="form-control">
+                </div>
+
+                <button type="submit" class="btn btn-success" data-dismiss="modal">Войти</button>
+            </form>
+            {% if login_error %}
+                <label class="error">{{ login_error }}</label>
+            {% endif %}
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success" data-dismiss="modal">Войти</button>
+                <a class="btn"  href="/portal"> Отладка </a>
+            </div>
+        </div>
+    </div>
+</div>

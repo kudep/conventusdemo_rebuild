@@ -1,0 +1,61 @@
+{%extends 'share/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="container">
+            <br>
+            <p class="text-center">Редактирование характеристики ответа</p>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="" method="post"> {% csrf_token %}
+                        {% for field in edited_form %}
+                            <div class="fieldWrapper">
+                                <label>{{ field.label_tag }}</label>
+                                <p>{{ field }}</p>
+                            </div>
+                        {% endfor %}
+                            <button type="submit" class="btn btn-success" >Сохранить</button>
+                    </form>
+                    <br>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#Back"  href="..">Назад</button>
+                </div>
+                <div class="col-lg-6">
+                    <div class="container">
+                        <!--<label class="text-center">Описание характеристики</label>-->
+                        <!--<div class="form-group">-->
+                            <!--<textarea class="form-control" rows="10" readonly>{{basis.description}}</textarea>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Back" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="model-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Возврат</h4>
+            </div>
+            <div class="modal-body">
+                Прежде чем перейти с этой страницы убедитесь, что все необходимые сохранения выполнены
+            </div>
+            <div class="modal-footer">
+            <div class="btn-group pull-right">
+                <a  class="btn btn-danger" href=".." >Назад</a>
+                <a class="btn" href="#" data-dismiss="modal">Отмена</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'share/feed.html' %}
+{% endblock %}

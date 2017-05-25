@@ -1,0 +1,27 @@
+{%extends 'share/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <br>
+        <p>Панель управления</p>
+
+        <div class="container">
+            <div class="panel-group" id="collapse-panel-group">
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                                <a href="/portal/story_dev">Сюжеты</a>
+                    </div>
+                    <div class="panel-heading">
+                                <a href="/portal/psy_dev">Базисы психотипов</a>
+                    </div>
+                    <div class="panel-heading">
+                                <a href="#">Статистика</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'share/feed.html' %}
+{% endblock %}

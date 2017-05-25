@@ -1,0 +1,144 @@
+{%extends 'share/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+            <br>
+            <p class="text-center">Редактирование ответа</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <form action="" method="post"> {% csrf_token %}
+                        {% for field in edited_form %}
+                            <div class="fieldWrapper">
+                                <label>{{ field.label_tag }}</label>
+                                <p>{{ field }}</p>
+                            </div>
+                        {% endfor %}
+                            <button type="submit" class="btn btn-success" >Сохранить</button>
+                    </form>
+                    <br>
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#Back"  href="/story/get/{{panel.id}}/0">Назад</button>
+                </div>
+                <div class="col-lg-6">
+                    <div class="container">
+                        <label class="text-center">Характеристики в системах психотипов:</label>
+                    </div>
+                    <div class="panel-group" id="collapse-panel-group">
+                        <div class="panel panel-info">
+                            {% for panel in set_characteristic_group %}
+                            <div class="panel-heading" data-toggle="collapse" data-parent="#collapse-group" href="#s{{panel.id}}" style="cursor: pointer">{{panel.basis}}</div>
+                            <div  id="s{{panel.id}}" class="collapse" >
+                                <div class="panel-body">
+                                    <div>
+                                        <div class="form-group">
+                                            <label>Вектор признаков:</label>
+                                            <textarea class="form-control" rows="1" readonly>{{panel.symptom_vector}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Вектор параметров:</label>
+                                            <textarea class="form-control" rows="1" readonly>{{panel.parameter_vector}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Описание базиса:</label>
+                                            <textarea class="form-control" rows="8" readonly>{{panel.basis.description}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <!--<a class="btn btn-danger" data-toggle="modal" data-target="#Edite{{panel.id}}"  href="#">Редактировать</a>-->
+                                        <a class="btn btn-success" href="{{panel.id}}">Редактировать</a>
+                                        <!--<a class="btn btn-primary" href="{{panel.id}}">Начать</a>-->
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    <div class="container">
+                        <label class="text-center">Неподключенные характеристики:</label>
+                    </div>
+                        <div class="panel panel-danger">
+                            {% for panel in unset_characteristic_group %}
+                            <div class="panel-heading" data-toggle="collapse" data-parent="#collapse-group" href="#u{{panel.id}}" style="cursor: pointer">{{panel.basis}}</div>
+                            <div  id="u{{panel.id}}" class="collapse" >
+                                <div class="panel-body">
+                                    <div>
+                                        <div class="form-group">
+                                            <label>Вектор признаков:</label>
+                                            <textarea class="form-control" rows="1" readonly>{{panel.symptom_vector}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Вектор параметров:</label>
+                                            <textarea class="form-control" rows="1" readonly>{{panel.parameter_vector}}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Описание базиса:</label>
+                                            <textarea class="form-control" rows="8" readonly>{{panel.basis.description}}</textarea>
+                                        </div>
+                                    </div>
+                                    <div class="btn-group pull-right">
+                                        <!--<a class="btn btn-danger" data-toggle="modal" data-target="#Edite{{panel.id}}"  href="#">Редактировать</a>-->
+                                        <a class="btn btn-success" href="{{panel.id}}">Редактировать</a>
+                                        <!--<a class="btn btn-primary" href="{{panel.id}}">Начать</a>-->
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="container">
+                        <label class="help-block text-center">Прежде чем перейти с этой страницы убедитесь, что все необходимые сохранения выполнены</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="Back" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="model-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Возврат</h4>
+            </div>
+            <div class="modal-body">
+                Прежде чем перейти с этой страницы убедитесь, что все необходимые сохранения выполнены
+            </div>
+            <div class="modal-footer">
+            <div class="btn-group pull-right">
+                <a  class="btn btn-danger" href=".." >Назад</a>
+                <a class="btn" href="#" data-dismiss="modal">Отмена</a>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% for panel in psy_cha_form %}
+<div id="Edite{{panel.id}}" class="modal fade" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="model-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal">x</button>
+                <h4 class="modal-title">Удаление</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" method="post"> {% csrf_token %}
+                        <div class="fieldWrapper">
+                            <label>{{ panel.label_tag }}</label>
+                            <p>{{ panel }}</p>
+                        </div>
+                        <button type="submit" class="btn btn-success" >Сохранить</button>
+                </form>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% include 'share/feed.html' %}
+{% endblock %}

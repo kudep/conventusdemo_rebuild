@@ -1,0 +1,39 @@
+{%extends 'share/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+            <br>
+            <p class="">Выберите сюжет</p>
+        <div class="container">
+            <div class="panel-group" id="collapse-panel-group">
+                <div class="panel panel-info">
+                    {% for panel in panel_group %}
+                    <div class="panel-heading" data-toggle="collapse" data-parent="#collapse-group" href="#{{panel.id}}" style="cursor: pointer">{{panel.title}}</div>
+                    <div  id="{{panel.id}}" class="collapse" >
+                        <div class="panel-body">
+                {% if panel.description %}
+                <div>
+                        <div class="form-group">
+                            <label>Описание:</label>
+                            <textarea class="form-control" rows="6" readonly>{{panel.description}}</textarea>
+                        </div>
+                    <!--<textarea class="form-control" style="min-width: 100%; min-height:150px;">-->
+                        <!--{{panel.description}}-->
+                    <!--</textarea>-->
+                </div>
+                {% endif %}
+                            <div class="btn-group pull-right">
+                                <a class="btn btn-primary" href="/story/get/{{panel.id}}/0">Начать</a>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'share/feed.html' %}
+{% endblock %}

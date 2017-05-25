@@ -1,0 +1,47 @@
+{%extends 'share/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+        <div class="container">
+            <br>
+            <p class="text-center">{{scene_data.title}}</p>
+                {% if scene_data.description %}
+                <div>
+                        <div class="form-group">
+                            <label>Описание:</label>
+                            <textarea class="form-control" rows="6" readonly>{{scene_data.description}}</textarea>
+                        </div>
+                    <!--<textarea class="form-control" style="min-width: 100%; min-height:150px;">-->
+                        <!--{{panel.description}}-->
+                    <!--</textarea>-->
+                </div>
+                {% endif %}
+        </div>
+        <div class="container">
+
+                {% if scene_data.question %}
+                <div>
+                        <div class="form-group">
+                            <label>Вопрос:</label>
+                            <textarea class="form-control" rows="2" readonly>{{scene_data.question}}</textarea>
+                        </div>
+                    <!--<textarea class="form-control" style="min-width: 100%; min-height:150px;">-->
+                        <!--{{panel.description}}-->
+                    <!--</textarea>-->
+                </div>
+                {% endif %}
+            <div class="panel-group" id="collapse-panel-group">
+                <div class="panel panel-info">
+                    {% for panel in panel_group %}
+                    <div class="panel-heading">
+                                <a href="/story/get/{{story_id}}/{{next_scene_order}}/">{{panel.answer}}</a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% include 'share/feed.html' %}
+{% endblock %}

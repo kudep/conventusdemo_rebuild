@@ -1,0 +1,29 @@
+{%extends 'share/base.html' %}
+
+{% block content %}
+<div class="jumbotron">
+    <div class="container">
+            <br>
+            <p class="">Выберите сюжет</p>
+        <div class="container">
+            {% include 'share/collapse_editable_panel_group.html' %}
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class="col-lg-4">
+                        <div class="btn-group center-block">
+                            <a class="btn btn-success" href="/portal/story_dev/new_story">Создать новый сюжет</a>
+                        </div>
+                    </div>
+                    <div class="col-xs-4"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% include 'share/collapse_editable_panel_group_modal.html' %}
+
+{% include 'share/feed.html' %}
+{% endblock %}

@@ -1,0 +1,33 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+*.sqlite3
+/static
+.DS_Store
+
+
+# Django stuff:
+*.log
+local_settings.py
+log/**
+*.pot
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IDEA
+.idea
