@@ -36,10 +36,6 @@ source env/ENVNAME/bin/activate
 В браузере переходим на 127.0.0.1:8000
 
 
-## Todo list
-Список запланированных [изменений (todo.md).](./todo.md)
-
-
 ## Versions
  A.B.C[.D]
 
