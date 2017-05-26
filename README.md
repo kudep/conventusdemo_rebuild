@@ -2,7 +2,8 @@ Conventusdemo rebuild
 ===========================
 
 ## Description
-Conventusdemo - сайт для демонстрации системы CONVENTUS.
+Conventusdemo - сайт для демонстрации системы CONVENTUS. 
+Бэкенд написан на Django, верстка разрабатывалась с использованием bootstrap.
 
 ## Requirements
 Для виртуально окружения можно использовать virtualenv. Разрабатывалась на python 3.4. Через pip устанавливались необходимые [пакеты (requirements.txt).](./requirements.txt)
