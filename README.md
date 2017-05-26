@@ -33,7 +33,7 @@ source env/ENVNAME/bin/activate
 ./manage.py createsuperuser --username USERNAME --email EMAIL@EMAIL
 ./manage.py runserver
 ```
-В браузер переходим на 127.0.0.1:8000
+В браузере переходим на 127.0.0.1:8000
 
 
 ## Todo list

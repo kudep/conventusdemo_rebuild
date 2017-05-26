@@ -3,12 +3,11 @@ TODO
 
 
 Status:
-(-) = Planned.
-(X) = In progress, some work done.
-(*) = Done.
-(?) = Not sure if worth the effort or useful at all.
-(N) = Decided against.
-
+* (-) = Planned.
+* (X) = In progress, some work done.
+* (*) = Done.
+* (?) = Not sure if worth the effort or useful at all.
+* (N) = Decided against.
 ----------------------------------
 
 * обновить модели:
@@ -18,3 +17,4 @@ Status:
 	* (-) Ошибка проверки CSRF при go back через браузер
 
 * (-) добавить статистику
+* (-) добавить режимы "Любовь", "Семья" и "Дружба". 
